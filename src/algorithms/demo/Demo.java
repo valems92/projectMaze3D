@@ -12,6 +12,8 @@ import algorithms.search.CostStateComperator;
 import algorithms.search.DepthFirstSearch;
 import algorithms.search.Searchable;
 import algorithms.search.Searcher;
+//מתרגש!!!!!!!!!!
+
 
 public class Demo {
 	public void run(){
