@@ -13,7 +13,7 @@ import algorithms.search.DepthFirstSearch;
 import algorithms.search.Searchable;
 import algorithms.search.Searcher;
 
-
+//workkkkkkkkkkkkkkkkkkkkkkkkk pleaseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 public class Demo {
 	public void run(){
 		Maze3dGenerator mg = new GrowingTreeGenerator(new RandomSelectMethod());
