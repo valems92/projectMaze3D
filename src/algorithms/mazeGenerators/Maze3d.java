@@ -1,7 +1,6 @@
 package algorithms.mazeGenerators;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * <h1>Maze3d</h1> Reprecent a 3D maze. Contains it's dimmension, and a 3D
