@@ -1,6 +1,7 @@
 package algorithms.mazeGenerators;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * <h1>Maze3d</h1> Reprecent a 3D maze. Contains it's dimmension, and a 3D
@@ -46,29 +47,66 @@ public class Maze3d {
 	 *            Byte array with all maze data
 	 */
 	public Maze3d(byte[] b) {
-		// size
-		this.z = (int) b[0];
-		this.y = (int) b[1];
-		this.x = (int) b[2];
-		maze = new int[z][y][x];
+//		// size
+//		this.z = (int) b[0];
+//		this.y = (int) b[1];
+//		this.x = (int) b[2];
+//		maze = new int[z][y][x];
+//
+//		// start position
+//		startPosition.z = (int) b[3]; //there is a problem
+//		startPosition.y = (int) b[4];
+//		startPosition.x = (int) b[5];
+//
+//		// goal position
+//		goalPosition.z = (int) b[6];
+//		goalPosition.y = (int) b[7];
+//		goalPosition.x = (int) b[8];
+//
+//		// values
+//		int index = 9;
+//		for (int i = 0; i < z; i++) {
+//			for (int j = 0; j < y; j++) {
+//				for (int k = 0; k < x; k++) {
+//					maze[i][j][k] = (int) b[index];
+//					index++;
+//				}
+//			}
+//		}
+		
+		//this working
+		StringBuilder sb=new StringBuilder();
+		for(byte records: b){
+			sb.append(records+" ");
+		}
+		//String string=new String(b);
+		Scanner scanner=new Scanner(sb.toString());
+		scanner.useDelimiter(" ");
+		
+		
+		//this.floor=b[0]-'0';
+		this.z=(scanner.nextInt());
+		this.y=(scanner.nextInt());
+		this.x=(scanner.nextInt());
+		
+		int z1,y1,x1;
+		z1=scanner.nextInt()/*-'0'*/;
+		y1=scanner.nextInt()/*-'0'*/;
+		x1=scanner.nextInt()/*-'0'*/;
+		this.startPosition=new Position(z1,y1,x1);
+		
+		z1=scanner.nextInt()/*-'0'*/;
+		y1=scanner.nextInt()/*-'0'*/;
+		x1=scanner.nextInt()/*-'0'*/;
+		this.goalPosition=new Position(z1,y1,x1);
 
-		// start position
-		startPosition.z = (int) b[3];
-		startPosition.y = (int) b[4];
-		startPosition.x = (int) b[5];
 
-		// goal position
-		goalPosition.z = (int) b[6];
-		goalPosition.y = (int) b[7];
-		goalPosition.x = (int) b[8];
-
-		// values
-		int index = 9;
-		for (int i = 0; i < z; i++) {
-			for (int j = 0; j < y; j++) {
-				for (int k = 0; k < x; k++) {
-					maze[i][j][k] = (int) b[index];
-					index++;
+		this.maze=new int[z][y][x];
+		for(int i=0;i<this.z;i++){
+			for(int j=0;j<this.y;j++){
+				for(int k=0; k<this.x;k++){
+					int cell=scanner.nextInt()/*-'0'*/;
+					this.maze[i][j][k]=cell;
 				}
 			}
 		}
