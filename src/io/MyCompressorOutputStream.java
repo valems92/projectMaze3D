@@ -18,7 +18,6 @@ public class MyCompressorOutputStream extends OutputStream {
 	}
 
 	public void write(byte b[]) throws IOException {
-		// public void write(byte[] b) throws IOException {
 		int count = 0;
 		for (int i = 0; i < SIZE; i++) {
 			out.write(b[i]);
