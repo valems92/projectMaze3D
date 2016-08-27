@@ -39,6 +39,41 @@ public class Maze3d {
 		this.initMazeValue();
 	}
 
+	/**
+	 * Create a new maze by data received.
+	 * 
+	 * @param b
+	 *            Byte array with all maze data
+	 */
+	public Maze3d(byte[] b) {
+		// size
+		this.z = (int) b[0];
+		this.y = (int) b[1];
+		this.x = (int) b[2];
+		maze = new int[z][y][x];
+
+		// start position
+		startPosition.z = (int) b[3];
+		startPosition.y = (int) b[4];
+		startPosition.x = (int) b[5];
+
+		// goal position
+		goalPosition.z = (int) b[6];
+		goalPosition.y = (int) b[7];
+		goalPosition.x = (int) b[8];
+
+		// values
+		int index = 9;
+		for (int i = 0; i < z; i++) {
+			for (int j = 0; j < y; j++) {
+				for (int k = 0; k < x; k++) {
+					maze[i][j][k] = (int) b[index];
+					index++;
+				}
+			}
+		}
+	}
+
 	public Position getStartPosition() {
 		return startPosition;
 	}
@@ -217,6 +252,44 @@ public class Maze3d {
 		return arr;
 	}
 
+	/**
+	 * <h1>toByteArray</h1> Create an array of bytes that contains all 3D maze
+	 * data.
+	 * 
+	 * @return The array
+	 */
+	public byte[] toByteArray() {
+		byte[] byteMaze = new byte[z * y * x + 9];
+
+		// size
+		byteMaze[0] = (byte) z;
+		byteMaze[1] = (byte) y;
+		byteMaze[2] = (byte) x;
+
+		// start position
+		byteMaze[3] = (byte) startPosition.z;
+		byteMaze[4] = (byte) startPosition.y;
+		byteMaze[5] = (byte) startPosition.x;
+
+		// goal position
+		byteMaze[6] = (byte) goalPosition.z;
+		byteMaze[7] = (byte) goalPosition.y;
+		byteMaze[8] = (byte) goalPosition.x;
+
+		// values
+		int index = 9;
+		for (int i = 0; i < z; i++) {
+			for (int j = 0; j < y; j++) {
+				for (int k = 0; k < x; k++) {
+					byteMaze[index] = (byte) (maze[i][j][k]);
+					index++;
+				}
+			}
+		}
+		
+		return byteMaze;
+	}
+	
 	/**
 	 * <h1>initMazeValue</h1> Initialize all the cells in maze to be WALLS.
 	 */
